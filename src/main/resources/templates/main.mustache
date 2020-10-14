@@ -1,0 +1,66 @@
+<html>
+<head>
+    <!-- Кодировка веб-страницы -->
+    <meta charset="utf-8">
+    <!-- Настройка viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Подключаем Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+<h1>я работаю блять</h1>
+<div>
+    <table  class="table">
+        <thead class="thead-light">
+        <tr>
+            <th  scope="col">id</th>
+            <th  scope="col">brand</th>
+            <th  scope="col">wheels_count</th>
+            <th  scope="col">cost</th>
+            <th  scope="col">driver_name</th>
+        </tr>
+        </thead>
+        {{#cars}}
+            <tr>
+                <td>{{ id }}</td>
+                <td>{{ brand }}</td>
+                <td>{{ wheels_count }}</td>
+                <td>{{ cost }}</td>
+                <td>{{ driver_name }}</td>
+                <td>
+                    <form method="post" action="/update">
+                        <input type="number" name="id" value="{{ id }}" hidden/>
+                        <input type="text" name="brand" placeholder="Введите brand"/>
+                        <input type="number" name="wheels_count" placeholder="Введите wheels_count"/>
+                        <input type="number" name="cost" placeholder="Введите cost"/>
+                        <input type="text" name="driver_name" placeholder="Введите driver_name"/>
+                        <button type="submit">Редактировать</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/delete">
+                        <input type="number" name="id" value="{{ id }}" hidden/>
+                        <button type="submit">Удалить</button>
+                    </form>
+                </td>
+
+            </tr>
+        {{/cars}}
+    </table>
+</div>
+<div>
+    <form method="post" action="/create">
+        <input type="text" name="brand" placeholder="Введите brand"/>
+        <input type="number" name="wheels_count" placeholder="Введите wheels_count"/>
+        <input type="number" name="cost" placeholder="Введите cost"/>
+        <input type="text" name="driver_name" placeholder="Введите driver_name"/>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<!-- Подключаем Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
